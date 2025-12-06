@@ -15,12 +15,15 @@ async function dbGetUsuarioById(id){
     return await usuarioModel.findById(id)
 }
 
-
+async function dbDeleteUsuarioById(id){
+    return await usuarioModel.findByIdAndDelete(id)
+}
 
 
 
 export {
     dbRegistrarUsuario,
     dbGetUsuarios,
-    dbGetUsuarioById
+    dbGetUsuarioById,
+    dbDeleteUsuarioById
 }

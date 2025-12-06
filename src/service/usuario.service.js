@@ -6,6 +6,18 @@ async function dbRegistrarUsuario(nuevoUsuario){
    return await usuarioModel.create(nuevoUsuario)
 }
 
+async function dbGetUsuarios(){
+    return await usuarioModel.find()
+}
+
+
+
+
+
+
+
+
 export {
-    dbRegistrarUsuario
+    dbRegistrarUsuario,
+    dbGetUsuarios
 }

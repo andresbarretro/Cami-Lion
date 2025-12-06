@@ -1,4 +1,4 @@
-import { dbRegistrarUsuario, dbGetUsuarios} from "../service/usuario.service.js";
+import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById} from "../service/usuario.service.js";
 
  const registrarUsuario = async (req, res) => {
 
@@ -30,7 +30,18 @@ const getUsuarios = async (req, res) => {
 
 };
 
+const getUsuarioById = async (req, res) => {
+    try { 
+        const id = req.params.id;
+        const data = await dbGetUsuarioById(id);
+        res.json(data);
 
+    } catch (error) {
+        console.error("Error al obtener usuario por ID:", error);
+        res.status(500).json({ error: "Error al obtener usuario por ID" });
+
+    }
+}
 
 
 
@@ -38,6 +49,7 @@ const getUsuarios = async (req, res) => {
 
 export {
     registrarUsuario,
-    getUsuarios
+    getUsuarios,
+    getUsuarioById
 }
 

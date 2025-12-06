@@ -11,7 +11,9 @@ async function dbGetUsuarios(){
 }
 
 
-
+async function dbGetUsuarioById(id){
+    return await usuarioModel.findById(id)
+}
 
 
 
@@ -19,5 +21,6 @@ async function dbGetUsuarios(){
 
 export {
     dbRegistrarUsuario,
-    dbGetUsuarios
+    dbGetUsuarios,
+    dbGetUsuarioById
 }

@@ -1,5 +1,5 @@
 import express from "express";
-import { getUsuarios, registrarUsuario } from "../controllers/usuarios.controlers.js";
+import { getUsuarioById, getUsuarios, registrarUsuario } from "../controllers/usuarios.controlers.js";
 
 
 const router = express.Router();
@@ -7,7 +7,7 @@ const router = express.Router();
 // se define las rutas para la entidad usuarios 
 router.post("/", registrarUsuario); 
 router.get("/",getUsuarios)
-
+router.get("/:id", getUsuarioById);
 
 
 export default router;

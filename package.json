@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "mongoose": "^9.0.0"
-  }
+  },
+  "name": "cami-lion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+     "dev": "node --watch ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresbarretro/Cami-Lion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresbarretro/Cami-Lion/issues"
+  },
+  "homepage": "https://github.com/andresbarretro/Cami-Lion#readme",
+"type": "module"
 }

@@ -1,6 +1,6 @@
 import {Schema, model} from 'mongoose'; 
 
-const usuariosSchema = new Schema({
+const usuarioSchema = new Schema({
     nombre: {
         type: String,
         required: true,
@@ -21,14 +21,14 @@ const usuariosSchema = new Schema({
         type: Number,
         trim: true,
         required: true,
-        minlength:9,
-        maxlength:10,
+        minLength:9,
+        // maxLength:10,
     },
     password: {
         type: String,
         required: true,
-        minlength: 6,
-        maxlength: 14,
+        minLength: 6,
+        // maxLength: 14,
     },
     rol: {
         type: String,
@@ -39,17 +39,15 @@ const usuariosSchema = new Schema({
         type: Boolean,
         default: true,
     },
-    fechaCreacion: {
-        type: Date,
-        default: Date.now,
-    },
+    
 },{
     timestamps: true,
-    creadoEn:{type: Date, default: Date.now}
+    versionKey: false,
+    
 });
 
 // Exportar el modelo de Usuario
-const usuarioModel = model('Usuario', usuariosSchema);
+const usuarioModel = model('Usuario', usuarioSchema);
 
 export default usuarioModel;
 

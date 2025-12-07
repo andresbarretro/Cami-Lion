@@ -19,11 +19,16 @@ async function dbDeleteUsuarioById(id){
     return await usuarioModel.findByIdAndDelete(id)
 }
 
+async function dbUpdateUsuarioById(id, updateData){
+    return await usuarioModel.findByIdAndUpdate(id,updateData,{new:true})
+}
+
 
 
 export {
     dbRegistrarUsuario,
     dbGetUsuarios,
     dbGetUsuarioById,
-    dbDeleteUsuarioById
+    dbDeleteUsuarioById,
+    dbUpdateUsuarioById
 }

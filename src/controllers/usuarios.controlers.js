@@ -1,4 +1,4 @@
-import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById, dbDeleteUsuarioById} from "../service/usuario.service.js";
+import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById, dbDeleteUsuarioById, dbUpdateUsuarioById} from "../service/usuario.service.js";
 
  const registrarUsuario = async (req, res) => {
 
@@ -41,7 +41,7 @@ const getUsuarioById = async (req, res) => {
         res.status(500).json({ error: "Error al obtener usuario por ID" });
 
     }
-}
+};
 
 const deleteUsuarioById = async (req, res) => {
     try { 
@@ -54,8 +54,22 @@ const deleteUsuarioById = async (req, res) => {
         res.status(500).json({ error: "Error al borrar usuario por ID" });
 
     }
-}
+};
 
+
+const updateUsuarioById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const inputData = req.body;
+        const data = await dbUpdateUsuarioById(id,inputData);
+        res.json(data);
+
+
+    }catch (error) {
+        console.error("Error al actualizar usuario por ID:", error);
+        res.status(500).json({ error: "Error al actualizar usuario por ID" });
+    }
+}
 
 
 
@@ -64,6 +78,7 @@ export {
     registrarUsuario,
     getUsuarios,
     getUsuarioById,
-    deleteUsuarioById
+    deleteUsuarioById,
+    updateUsuarioById
 }
 

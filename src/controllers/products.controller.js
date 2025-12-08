@@ -1,4 +1,4 @@
-import { dbCrearProducto, dbObtenerProductos} from "../service/products.service.js";
+import { dbActualizarProductoByID, dbCrearProducto, dbObtenerProductoPorId, dbObtenerProductos} from "../service/products.service.js";
 
 
 
@@ -29,9 +29,42 @@ async function obtenerProductos(req, res){
     }
 }
 
+async function obtenerProductosPorID(req, res) {
+       
+    try {
+        const id = req.params.id
+        const data = await dbObtenerProductoPorId(id);
+        res.json(data)
+    
+}catch(error) {
+        console.error("Error al obtener producto por ID:", error);
+        res.status(500).json({ error: "Error al obtener producto por ID" });
+    }
+}
+
+async function actualizarProductosByID(req,res){
+
+    try{
+        const id = req.params.id
+        const updateData = req.body;
+        const data = await dbActualizarProductoByID(id,updateData)
+        res.json(data)
+    }catch(error){
+        console.error("Error al actualizar producto por ID:", error);
+        res.status(500).json({ error: "Error al actualizar producto por ID" });
+
+    }
+
+}
+
+
+
 
 
 export{
     crearProducto, 
-    obtenerProductos
+    obtenerProductos,
+    obtenerProductosPorID,
+    actualizarProductosByID
 }
+

@@ -9,9 +9,16 @@ async function dbObtenerProductos(){
     return await productoModel.find()
 };
 
-
+async function dbObtenerProductoPorId(id){
+    return await productoModel.findById(id)
+}
+async function dbActualizarProductoByID(id,updateData){
+    return await productoModel.findByIdAndUpdate(id, updateData, { new: true });
+}
 
 export{
     dbCrearProducto,
-    dbObtenerProductos
+    dbObtenerProductos,
+    dbObtenerProductoPorId,
+    dbActualizarProductoByID
 }

@@ -16,9 +16,16 @@ async function dbActualizarProductoByID(id,updateData){
     return await productoModel.findByIdAndUpdate(id, updateData, { new: true });
 }
 
+async function dbDeleteProductoById(id) {
+    return await productoModel.findByIdAndDelete(id);
+}
+
+
+
 export{
     dbCrearProducto,
     dbObtenerProductos,
     dbObtenerProductoPorId,
-    dbActualizarProductoByID
+    dbActualizarProductoByID,
+    dbDeleteProductoById
 }

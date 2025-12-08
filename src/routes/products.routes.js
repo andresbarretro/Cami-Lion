@@ -1,5 +1,5 @@
 import express from "express";
-import { actualizarProductosByID, crearProducto, obtenerProductos, obtenerProductosPorID } from "../controllers/products.controller.js";
+import { actualizarProductosByID, borrarProductoByID, crearProducto, obtenerProductos, obtenerProductosPorID } from "../controllers/products.controller.js";
 
  
 const router = express.Router();
@@ -9,7 +9,7 @@ router.post("/", crearProducto);
 router.get("/", obtenerProductos);
 router.get("/:id", obtenerProductosPorID);
 router.patch("/:id", actualizarProductosByID);
-
+router.delete("/:id",borrarProductoByID)
 
 
 

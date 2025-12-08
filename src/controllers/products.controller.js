@@ -1,4 +1,4 @@
-import { dbActualizarProductoByID, dbCrearProducto, dbObtenerProductoPorId, dbObtenerProductos} from "../service/products.service.js";
+import { dbActualizarProductoByID, dbCrearProducto, dbDeleteProductoById, dbObtenerProductoPorId, dbObtenerProductos} from "../service/products.service.js";
 
 
 
@@ -58,6 +58,11 @@ async function actualizarProductosByID(req,res){
 }
 
 
+async function borrarProductoByID(req,res){
+    const id = req.params.id;
+    const data = await dbDeleteProductoById(id);
+
+}
 
 
 
@@ -65,6 +70,7 @@ export{
     crearProducto, 
     obtenerProductos,
     obtenerProductosPorID,
-    actualizarProductosByID
+    actualizarProductosByID,
+    borrarProductoByID
 }
 

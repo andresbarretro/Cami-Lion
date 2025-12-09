@@ -1,8 +1,9 @@
+//Mongoose ODM, ORM
 import mongoose from 'mongoose';
 
-const MONGO_URI = 'mongodb://localhost:27017/crm-fiadores';
+const MONGO_URI = '';
 
-const dbconection = async () => {
+const dbconeccion = async () => {
 
 try{
 await mongoose.connect(MONGO_URI,{});
@@ -14,4 +15,4 @@ catch (error){
 };
 }
 
-export default dbconection;
+export default dbconeccion;

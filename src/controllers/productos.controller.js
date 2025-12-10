@@ -1,71 +1,94 @@
 import productosModel from "../models/productos.model.js"
-import { dbdeleteProductoPorId, dbgetProducto, dbregistroProducto } from "../services/prodcutos.service.js"
+import { dbdeleteProductoPorId, dbgetProducto, dbregistroProducto, dbactualizarProductoPorId } from "../services/prodcutos.service.js"
 
 
-const creaProducto = async ( req, res ) => {
-    try{
-    const data = req.body;
+const creaProducto = async (req, res) => {
 
- 
-    console.log(data);
+    try {
+        const data = req.body;
 
-   
-    
-    const dataRegister = await dbregistroProducto( data ); 
-    res.json({ msg: 'Producto Creado',
-        dataRegister 
-    });
+        console.log(data);
+
+        const dataRegister = await dbregistroProducto(data);
+        res.json({
+            msg: 'Producto Creado',
+            dataRegister
+        });
+    }
+
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'Error no se puede crear el producto'
+        });
+
+    };
 }
-
-catch (error){
-    console.error(error);
-    res.json({
-        msg:'Error no se puede crear el producto'
-    });
-
-};
-};
 
 const getProducto = async (req, res) => {
-     try {
-    const producto = await dbgetProducto ();
-    res.json({
-        msg:'obtiene todos los productos',
-        users
-    });
-}
-catch (error){
-    console.error( error );
-    res.json({
-        msg:'Error:No se puedo obtener el listado de productos'
-    });
-}
+    try {
+        const productos = await dbgetProducto();
+        res.json({
+            msg: 'obtiene todos los productos',
+            productos
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'Error:No se puedo obtener el listado de productos'
+        });
+    }
 
 }
 
 const deleteProducto = async (req, res) => {
-    try{
-    const idProducto = req.params.idProducto; //preguntar andres
+    try {
+        const idProducto = req.params.idProducto; //preguntar andres
 
-    const productoDeleted = await dbdeleteProductoPorId( idUser ); //pregunta andres
+        const productoDeleted = await dbdeleteProductoPorId(idProducto); //pregunta andres
 
-    res.json({
-        productoDeleted
-    });
+        res.json({
+            productoDeleted
+        });
+    }
+
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'Error no se puedo eliminar el producto por Id'
+        });
+    }
+
 }
 
-catch(error){
-    console.error(error);
-    res.json({
-        msg:'Error no se puedo eliminar el producto por Id'
-    });
-}
+const actuliazarProducto = async (req, res) => {
+    try {
+        const inputData = req.body;
+        const idProducto = req.params.idProducto;
 
-}
+        const userUpdate = await dbactualizarProductoPorId(idProducto, inputData);
 
 
-export{
+        res.json(
+            inputData,
+            userUpdate
+        );
+
+    }
+
+    catch (error) {
+        console.error(error);
+        res.json({
+            msg: 'ERROR: No pudo actualizar el producto por Id'
+        })
+    }
+
+};
+
+export {
     creaProducto,
     getProducto,
-    deleteProducto
+    deleteProducto,
+    actuliazarProducto
 }

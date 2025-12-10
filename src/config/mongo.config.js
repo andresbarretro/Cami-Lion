@@ -1,7 +1,7 @@
 //Mongoose ODM, ORM
 import mongoose from 'mongoose';
 
-const MONGO_URI = '';
+const MONGO_URI = 'mongodb://localhost:27017/crm-fiadores';
 
 const dbconeccion = async () => {
 

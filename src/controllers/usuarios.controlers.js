@@ -1,10 +1,13 @@
-import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById, dbDeleteUsuarioById, dbUpdateUsuarioById} from "../service/usuario.service.js";
+import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById, dbDeleteUsuarioById, dbUpdateUsuarioById, dbGetUsuarioByEmail} from "../service/usuario.service.js";
 
  const registrarUsuario = async (req, res) => {
 
     try {
         const inputData = req.body;
-    
+        const existingUser = await dbGetUsuarioByEmail(inputData.email);
+        if (existingUser) {
+           return res.json({ message: "El usuario ya existe" });
+        }
         const data =await dbRegistrarUsuario(inputData)
     
         res.json(data);

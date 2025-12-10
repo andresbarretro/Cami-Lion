@@ -15,6 +15,9 @@ async function dbGetUsuarioById(id){
     return await usuarioModel.findById(id)
 }
 
+async function dbGetUsuarioByEmail(email){
+    return await usuarioModel.findById(email)
+}
 async function dbDeleteUsuarioById(id){
     return await usuarioModel.findByIdAndDelete(id)
 }
@@ -30,5 +33,6 @@ export {
     dbGetUsuarios,
     dbGetUsuarioById,
     dbDeleteUsuarioById,
+    dbGetUsuarioByEmail,
     dbUpdateUsuarioById
 }

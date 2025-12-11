@@ -34,7 +34,7 @@ import {Schema, model} from "mongoose";
 );
 
 const prodcutosModel = model(
-    'productos', //pregunta andres
+    'productos', //con esto se nombra la base de datos
     prodcutosSchema  
 );
 

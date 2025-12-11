@@ -19,7 +19,7 @@ const creaProducto = async (req, res) => {
     catch (error) {
         console.error(error);
         res.json({
-            msg: 'Error no se puede crear el producto'
+            msg: 'Error no se puede crear el producto deseado'
         });
 
     };

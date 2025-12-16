@@ -4,20 +4,24 @@ import { dbRegistrarUsuario, dbGetUsuarios, dbGetUsuarioById, dbDeleteUsuarioByI
  const registrarUsuario = async (req, res) => {
 
     try {
+        //Pasi 1 :traer la informacion del body
         const inputData = req.body;
+
+        // paso 2: validar que el usuario no exista en la base de datos
         const existingUser = await dbGetUsuarioByEmail(inputData.email);
         if (existingUser) {
            return res.json({ message: "El usuario ya existe" });
         }
-
+        // paso 3: encriptar la contraseña antes de guardarla en la base de datos
         inputData.password = encriptarPassword(inputData.password);
             console.log("Password encriptado:", inputData);
-
+        // paso 4: registrar el usuario en la base de datos
         const data =await dbRegistrarUsuario(inputData)
-    
+        
+        // paso 5: eliminar la propiedad password antes de enviar la respuesta  
         const jsondata = data.toObject(); // Convertir el documento de Mongoose a un objeto plano
         delete jsondata.password; // Eliminar la propiedad 'password'
-
+    
     res.json({user: jsondata});
 
         

@@ -1,19 +1,31 @@
 import jwt  from "jsonwebtoken";
 
 const generarToken = (payload) => {
-   return jwt.sign(
+   try{
+    return jwt.sign(
         payload,                    // carga util
         "claveSecreta",            //Semilla (palabra secreta)
        {expiresIn: "1h"}
-   )};
-    
-                                  // opciones de configuracion del token
+   )} catch(error){
+        console.error(error);
+        return null;
+   }
 
-
-
+}
+   const validarToken = (token)=>{
+    try{
+        return jwt.verify(token,"claveSecreta");
+    } catch(error){
+        console.error(error);
+        return null;
+    }
+   }
 
 
 export {
-    generarToken
+    generarToken,
+    validarToken
 
-};
+}
+
+

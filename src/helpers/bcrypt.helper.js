@@ -9,7 +9,13 @@ const encriptarPassword =  (passwordUsuario) => {
 };
 
 const verificarPassword =  (originalpassword,hash) => {
-    return bcrypt.compareSync(originalpassword, hash);
+    try{
+        const isValid = bcrypt.compareSync(originalpassword, hash);
+        return isValid;
+    }catch(error){
+        console.error("Error al verificar la contraseña:", error);
+        return null;
+};
 };
 
 

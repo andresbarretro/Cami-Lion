@@ -1,6 +1,8 @@
 import {Router} from "express";
 import { registrarUsuario } from "../controllers/usuarios.controlers.js";
-import { loginUser } from "../controllers/auth.congtroller.js";
+import { loginUser, reNewToken } from "../controllers/auth.congtroller.js";
+import { authUser } from "../middlerwares/auth.mid.js";
+import { autorizacion } from "../middlerwares/autorizacion.mid.js";
 
 const router = Router();
 
@@ -8,6 +10,7 @@ const router = Router();
 
 router.post("/login",loginUser);
 router.post("/register",registrarUsuario);
-// router.get("/renue-token",);
+router.get("/renewtoken",authUser,autorizacion,reNewToken);
+
 
 export default router;

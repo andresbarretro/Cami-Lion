@@ -27,5 +27,5 @@ export{
     dbregistroResenas,
     dbgetResenas,
     dbdeleteResenasPorId,
-    dbactualizarResenasPorId
+    dbactualizarResenasPorI
     }

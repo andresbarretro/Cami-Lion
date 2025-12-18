@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const categoriasSchema = new Schema ({
-    nombr:{
+    nombre:{
         type:String,
         required:true
     },

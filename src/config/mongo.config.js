@@ -1,18 +1,18 @@
 //Mongoose ODM, ORM
 import mongoose from 'mongoose';
 
-const MONGO_URI = 'mongodb://localhost:27017/crm-fiadores';
+const MONGO_URI = 'mongodb://localhost:27017/db-camisetas';
 
 const dbconeccion = async () => {
 
-try{
-await mongoose.connect(MONGO_URI,{});
-      console.log('Base de datos conectada exitosamente')
-}
-catch (error){
-    console.error(error);
-    console.error('Error al iniciar la base de datos :C')
-};
+    try {
+        await mongoose.connect(MONGO_URI, {});
+        console.log('Base de datos conectada exitosamente')
+    }
+    catch (error) {
+        console.error(error);
+        console.error('Error al iniciar la base de datos :C')
+    };
 }
 
 export default dbconeccion;
